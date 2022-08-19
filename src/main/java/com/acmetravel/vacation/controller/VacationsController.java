@@ -19,7 +19,7 @@ public class VacationsController {
 
     @GetMapping
     public ResponseEntity<List<VacationDto>> getVacationsList() {
-        
+
         System.out.println("GET Vacations");
 
         var response = vacationService.getVacations();
