@@ -12,7 +12,7 @@ import java.io.IOException;
 import java.util.List;
 
 @Component
-public class PopularDB {
+public class PopulateDatabase {
 
     @Autowired
     private VacationRepository repository;
