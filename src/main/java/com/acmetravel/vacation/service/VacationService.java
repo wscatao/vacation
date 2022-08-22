@@ -1,6 +1,7 @@
 package com.acmetravel.vacation.service;
 
 import com.acmetravel.vacation.domain.Vacation;
+import com.acmetravel.vacation.domain.mapper.VacationMapper;
 import com.acmetravel.vacation.dto.VacationDto;
 import com.acmetravel.vacation.mapper.VacationDtoMapper;
 import com.acmetravel.vacation.repository.VacationRepository;
@@ -36,5 +37,14 @@ public class VacationService {
         vacationsList.forEach(vacation -> vacationDtos.add(VacationDtoMapper.INSTANCE.vacationToVacationDto(vacation)));
 
         return vacationDtos;
+    }
+
+    public VacationDto save(VacationDto vacationDto) {
+
+        var vacation = VacationMapper.INSTANCE.vacationDtoToVacation(vacationDto);
+
+        var vacationSaved = vacationRepository.save(vacation);
+
+        return VacationDtoMapper.INSTANCE.vacationToVacationDto(vacationSaved);
     }
 }
