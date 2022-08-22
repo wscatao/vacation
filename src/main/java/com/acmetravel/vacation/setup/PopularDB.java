@@ -27,7 +27,7 @@ public class PopularDB {
                     new TypeReference<List<Vacation>>() {
                     });
 
-            vacations.forEach(vacation -> repository.salvar(vacation));
+            vacations.forEach(vacation -> repository.save(vacation));
 
         } catch (IOException e) {
 
