@@ -5,9 +5,7 @@ import com.acmetravel.vacation.service.VacationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -18,7 +16,7 @@ public class VacationsController {
     VacationService vacationService;
 
     @GetMapping
-    public ResponseEntity<List<VacationDto>> getVacationsList() {
+    public ResponseEntity<List<VacationDto>> getVacations() {
 
         System.out.println("GET Vacations");
 
@@ -27,5 +25,14 @@ public class VacationsController {
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
 
+    @PostMapping
+    public ResponseEntity<VacationDto> postVacation(@RequestBody VacationDto vacationRequest) {
+
+        System.out.println("POST Vacation");
+
+        var response = vacationService.save(vacationRequest);
+
+        return new ResponseEntity<>(response, HttpStatus.OK);
+    }
 
 }
