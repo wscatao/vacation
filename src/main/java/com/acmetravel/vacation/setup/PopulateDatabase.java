@@ -12,7 +12,7 @@ import java.io.IOException;
 import java.util.List;
 
 @Component
-public class PopularDB {
+public class PopulateDatabase {
 
     @Autowired
     private VacationRepository repository;
@@ -27,7 +27,7 @@ public class PopularDB {
                     new TypeReference<List<Vacation>>() {
                     });
 
-            vacations.forEach(vacation -> repository.salvar(vacation));
+            vacations.forEach(vacation -> repository.save(vacation));
 
         } catch (IOException e) {
 

@@ -16,10 +16,19 @@ public class VacationRepository {
     @Autowired
     private VacationTemplate repository;
 
-    public void salvar(Vacation vacation) {
+    public Vacation save(Vacation vacation) {
 
-        repository.save(vacation);
+        try {
+
+            return repository.save(vacation);
+
+        } catch (Exception ex) {
+
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, ex.getMessage());
+        }
+
     }
+
     public List<Vacation> getVacations() {
 
         try {
